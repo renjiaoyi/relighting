@@ -1,212 +1,216 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-			<meta name="description"
-				content="Relighting">
-				<meta name="keywords" content="image relighting, inverse rendering">
-					<meta name="viewport" content="width=device-width, initial-scale=1">
-						<title>Weakly-supervised single-view image relighting</title>
+<meta charset="utf-8">
+<meta name="description"
+content="Relighting">
+<meta name="keywords" content="image relighting, inverse rendering">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weakly-supervised single-view image relighting</title>
 						
-						<link rel="stylesheet" href="./static/css/bulma.min.css">
-							<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-								<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-									<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-										<link rel="stylesheet"
-											href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-											<link rel="stylesheet" href="./static/css/index.css">
-												<link rel="icon" href="./static/images/favicon.svg">
-													
-													<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-													<script defer src="./static/js/fontawesome.all.min.js"></script>
-													<script src="./static/js/bulma-carousel.min.js"></script>
-													<script src="./static/js/bulma-slider.min.js"></script>
-													<script src="./static/js/index.js"></script>
-												</head>
-												<body>
-													
-													
-													<section class="hero">
-														<div class="hero-body">
-															<div class="container is-max-desktop">
-																<div class="columns is-centered">
-																	<div class="column has-text-centered">
-																		<h1 class="title is-1 publication-title">Weakly-supervised single-view image relighting</h1>
-																		<div class="is-size-5 publication-authors">
-																			<span class="author-block">
-																				<a href="https://renjiaoyi.github.io/">Renjiao Yi</a>,</span>
-																			<span class="author-block">
-																				<a href="http://www.zhuchenyang.net/">Chenyang Zhu</a>,
-																			</span>
-																			<span class="author-block">
-																				<a href="http://kevinkaixu.net/">Kai Xu</a>
-																			</span>
-																		</div>
-																		
-																		<div class="is-size-5 publication-authors">
-																			<span class="author-block">National University of Defense Technology</span>
-																			
-																		</div>
-																		
-																		<div class="column has-text-centered">
-																			<div class="publication-links">
-																				<!-- PDF Link. -->
-																				<span class="link-block">
-																					<a href=""
-																						class="external-link button is-normal is-rounded is-dark">
-																						<span class="icon">
-																							<i class="fas fa-file-pdf"></i>
-																						</span>
-																						<span>arXiv</span>
-																					</a>
-																				</span>
-																				<!-- Code Link. -->
-																				<span class="link-block">
-																					<a href="https://github.com/renjiaoyi/imagerelighting/tree/main"
-																						class="external-link button is-normal is-rounded is-dark">
-																						<span class="icon">
-																							<i class="fab fa-github"></i>
-																						</span>
-																						<span>Codes</span>
-																					</a>
-																				</span>
-																				<span class="link-block">
-																					<a href="https://www.dropbox.com/sh/8hha489c31yqkjm/AAD42Sphm7bISBCWKdAI-sena?dl=0"
-																						class="external-link button is-normal is-rounded is-dark">
-																						<span class="icon">
-																							<i class="fab fa-github"></i>
-																						</span>
-																						<span>Relit Dataset</span>
-																					</a>
-																				</span>
-																			</div>
-																			
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</section>
-													
-													<section class="hero teaser">
-														<div class="container is-max-desktop">
-															<div class="hero-body">
-																<img src="./static/images/teaser.PNG"
-																class="teaser image"
-																	alt="teaser image"/>
-								
-																	<h2 class="subtitle has-text-centered">
-																		Our method relights real objects into new scenes from single images, which also enables editing materials from diffuse to low-frequency specular with non-Lambertian rendering layers.
-																	</h2>
-																</div>
-															</div>
-														</section>
-														
-														
-														<section class="section">
-															<div class="container is-max-desktop">
-																<!-- Abstract. -->
-																<div class="columns is-centered has-text-centered">
-																	<div class="column is-four-fifths">
-																		<h2 class="title is-3">Abstract</h2>
-																		<div class="content has-text-justified">
-																			<p>
-																				We present a learning-based approach to relight a single image of Lambertian and low-frequency specular objects. Our method enables inserting objects from photographs into new scenes and relighting them under the new environment lighting, which is essential for AR applications. To relight the object, we solve both inverse rendering and re-rendering. To resolve the ill-posed inverse rendering, we propose a weakly-supervised method by a low-rank constraint. To facilitate the weakly-supervised training, we contribute Relit, a large-scale (750K images) dataset of videos with aligned objects under changing illuminations. For re-rendering, we propose a differentiable specular rendering layer to render low-frequency non-Lambertian materials under various illuminations of spherical harmonics. The whole pipeline is end-to-end and efficient, allowing for a mobile app implementation of AR object insertion. Extensive evaluations demonstrate that our method achieves state-of-the-art performance.
-																			</p>
-																		</div>
-																	</div>
-																</div>
-																<!--/ Abstract. -->
-																
-																<!-- Pipeline. -->
-																<div class="columns is-centered has-text-centered">
-																	<div class="column is-four-fifths">
-																		<h2 class="title is-3">Pipeline</h2>
-																		<div class="pipeline">
-																			<img src="./static/images/pipeline.PNG"
-																				class="pipeline image"
-																				alt="pipeline image"/>
-																			</div>
-																		</div>
-																	</div>
-																	
-																	<div class="columns is-centered has-text-centered">
-																		<div class="column is-four-fifths">
-																			<div class="content has-text-justified">
-																				<p>
-																					Overview of our method. At training time, Spec-Net separates input images into specular and diffuse branches. Spec-Net, Normal-Net and Light-Net are trained in a self-supervised manner by the Relit dataset. At inference time, inverse rendering properties are predicted to relight the object under novel lighting and material. The non-Lambertian render layers produce realistic relit images.
-																				</p>
-																			</div>
-																		</div>
-																	</div>
-																	<!--/ Pipeline. -->
-																	
-																</div>
-															</section>
-															
-															<section class="section">
-																<div class="container is-max-desktop">
-																	<div class="columns is-centered has-text-centered">
-																		<div class="column is-four-fifths">
-																			<h2 class="title is-3">Videos</h2>
-																		</div>
-																	</div>
-																	<div class="columns is-centered has-text-centered">
-																		<div class="column is-four-fifths">
-																			<div class="content has-text-justified">
-																				<p>
-																					Here are relighting demos for videos, App demos and sample videos from the Relit dataset, whose link is at the top of this page. 
-																				</p>
-																				
-																			</div>
-																		</div>
-																	</div>
-																	
-																	<div class="content has-text-centered">
-																		<video id="replay-video"
-																			controls
-																			muted
-																			preload
-																			playsinline
-																			width="80%">
-																			<source src="./static/videos/relightingdemo.mp4"
-																				type="video/mp4">
-																			</video>
-																		</div>
-																	<div class="content has-text-centered">
-																		<video id="replay-video"
-																			controls
-																			muted
-																			preload
-																			playsinline
-																			width="80%">
-																			<source src="./static/videos/Appdemo.mp4"
-																				type="video/mp4">
-																			</video>
-																		</div>
-																	<div class="content has-text-centered">
-																		<video id="replay-video"
-																			controls
-																			muted
-																			preload
-																			playsinline
-																			width="80%">
-																			<source src="./static/videos/190.mp4"
-																				type="video/mp4">
-																			</video>
-																		</div>
-																	</div>
-																</section>
-																
-																
-																<section class="section" id="BibTeX">
-																	<div class="container is-max-desktop content">
-																		<h2 class="title">BibTeX</h2>
-																		<pre><code>BibTeX, coming soon</code></pre>
-																	</div>
-																</section>
-																
-																
-																
-															</body>
-														</html>
+<link rel="stylesheet" href="./static/css/bulma.min.css">
+<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="./static/css/index.css">
+<link rel="icon" href="./static/images/favicon.svg">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+					<script src="./static/js/bulma-slider.min.js"></script>
+					<script src="./static/js/index.js"></script>
+				</head>
+				<body>
+					
+					
+					<section class="hero">
+						<div class="hero-body">
+							<div class="container is-max-desktop">
+<div class="columns is-centered">
+	<div class="column has-text-centered">
+		<h1 class="title is-1 publication-title">Weakly-supervised single-view image relighting</h1>
+		<div class="is-size-5 publication-authors">
+			<span class="author-block">
+				<a href="https://renjiaoyi.github.io/">Renjiao Yi</a>,</span>
+			<span class="author-block">
+				<a href="http://www.zhuchenyang.net/">Chenyang Zhu</a>,
+			</span>
+			<span class="author-block">
+				<a href="http://kevinkaixu.net/">Kai Xu</a>,
+			</span>
+		</div>
+	
+
+		<div class="is-size-5 publication-authors">
+			<span class="author-block">National University of Defense Technology</span>
+			
+		</div>
+<h2 style="font-size:24px;color:#6e6e6e">CVPR 2023</h2>
+		<div class="column has-text-centered">
+			<div class="publication-links">
+				<!-- PDF Link. -->
+				<span class="link-block">
+					<a href=""
+						class="external-link button is-normal is-rounded is-dark">
+						<span class="icon">
+							<i class="fas fa-file-pdf"></i>
+						</span>
+						<span>arXiv</span>
+					</a>
+				</span>
+				<!-- Code Link. -->
+				<span class="link-block">
+					<a href=""
+						class="external-link button is-normal is-rounded is-dark">
+						<span class="icon">
+							<i class="fab fa-github"></i>
+						</span>
+						<span>Code</span>
+					</a>
+				</span>
+				<span class="link-block">
+					<a href="https://www.dropbox.com/sh/8hha489c31yqkjm/AAD42Sphm7bISBCWKdAI-sena?dl=0"
+						class="external-link button is-normal is-rounded is-dark">
+						<span class="icon">
+							<i class="fab fa-github"></i>
+						</span>
+						<span>Relit Dataset</span>
+					</a>
+				</span>
+			</div>
+			
+		</div>
+	</div>
+</div>
+							</div>
+						</div>
+					</section>
+					
+					<section class="hero teaser">
+						<div class="container is-max-desktop">
+							<div class="hero-body">
+<img src="./static/images/teaser.PNG"
+class="teaser image"
+	alt="teaser image"/>
+
+	<h2 class="subtitle has-text-centered">
+		Our method relights real objects into new scenes from single images, which also enables editing materials from diffuse to low-frequency specular with non-Lambertian rendering layers.
+	</h2>
+</div>
+							</div>
+						</section>
+						
+						
+						<section class="section">
+							<div class="container is-max-desktop">
+<!-- Abstract. -->
+<div class="columns is-centered has-text-centered">
+	<div class="column is-four-fifths">
+		<h2 class="title is-3">Abstract</h2>
+		<div class="content has-text-justified">
+			<p>
+				We present a learning-based approach to relight a single image of Lambertian and low-frequency specular objects. Our method enables inserting objects from photographs into new scenes and relighting them under the new environment lighting, which is essential for AR applications. To relight the object, we solve both inverse rendering and re-rendering. To resolve the ill-posed inverse rendering, we propose a weakly-supervised method by a low-rank constraint. To facilitate the weakly-supervised training, we contribute Relit, a large-scale (750K images) dataset of videos with aligned objects under changing illuminations. For re-rendering, we propose a differentiable specular rendering layer to render low-frequency non-Lambertian materials under various illuminations of spherical harmonics. The whole pipeline is end-to-end and efficient, allowing for a mobile app implementation of AR object insertion. Extensive evaluations demonstrate that our method achieves state-of-the-art performance.
+			</p>
+		</div>
+	</div>
+</div>
+<!--/ Abstract. -->
+
+<!-- Pipeline. -->
+<div class="columns is-centered has-text-centered">
+	<div class="column is-four-fifths">
+		<h2 class="title is-3">Pipeline</h2>
+		<div class="pipeline">
+			<img src="./static/images/pipeline.PNG"
+				class="pipeline image"
+				alt="pipeline image"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="columns is-centered has-text-centered">
+		<div class="column is-four-fifths">
+			<div class="content has-text-justified">
+				<p>
+					Overview of our method. At training time, Spec-Net separates input images into specular and diffuse branches. Spec-Net, Normal-Net and Light-Net are trained in a self-supervised manner by the Relit dataset. At inference time, inverse rendering properties are predicted to relight the object under novel lighting and material. The non-Lambertian render layers produce realistic relit images.
+				</p>
+			</div>
+		</div>
+	</div>
+	<!--/ Pipeline. -->
+	
+</div>
+							</section>
+							
+							<section class="section">
+<div class="container is-max-desktop">
+	<div class="columns is-centered has-text-centered">
+		<div class="column is-four-fifths">
+			<h2 class="title is-3">Videos</h2>
+		</div>
+	</div>
+	<div class="columns is-centered has-text-centered">
+		<div class="column is-four-fifths">
+			<div class="content has-text-justified">
+				<p>
+					Here are relighting demos for videos, App demos and sample videos from the Relit dataset, whose link is at the top of this page. 
+				</p>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="content has-text-centered">
+		<video id="replay-video"
+			controls
+			muted
+			preload
+			playsinline
+			width="80%">
+			<source src="./static/videos/relightingdemo.mp4"
+				type="video/mp4">
+			</video>
+		</div>
+	<div class="content has-text-centered">
+		<video id="replay-video"
+			controls
+			muted
+			preload
+			playsinline
+			width="80%">
+			<source src="./static/videos/Appdemo.mp4"
+				type="video/mp4">
+			</video>
+		</div>
+	<div class="content has-text-centered">
+		<video id="replay-video"
+			controls
+			muted
+			preload
+			playsinline
+			width="80%">
+			<source src="./static/videos/190.mp4"
+				type="video/mp4">
+			</video>
+		</div>
+	</div>
+</section>
+
+
+<section class="section" id="BibTeX">
+	<div class="container is-max-desktop content">
+		<h2 class="title">BibTeX</h2>
+		<pre><code>@inproceedings{zhu2023i2sdf,
+    title = {Weakly-supervised single-view image relighting},
+    author = {Renjiao Yi, Chenyang Zhu, Kai Xu},
+    booktitle = {CVPR},
+    year = {2023}
+}</code></pre>
+	</div>
+</section>
+
+
+</body>
+</html>
